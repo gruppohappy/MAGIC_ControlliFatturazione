@@ -1021,7 +1021,7 @@ Public Class Principale
             docA = txtADoc.Text
 
             If Convert.ToInt32(docDa) <= Convert.ToInt32(docA) Then
-                If (Convert.ToInt32(docA) - Convert.ToInt32(docDa)) < 500 Then
+                If (Convert.ToInt32(docA) - Convert.ToInt32(docDa)) < 50 Then
                     If checkInterno.Checked Or checkEsterno.Checked Then
                         If checkInterno.Checked Then interno = True Else interno = False
                         If checkEsterno.Checked Then esterno = True Else esterno = False
