@@ -1191,6 +1191,19 @@ Public Class Principale
             NrDDTprecedente = 0
             DataPrima = ""
 
+            ' Codice aggiunto per gestire mancanza azzeramento contatore bollettazione GENNAIO 2021, come su richiesta di Larissa: 
+            ' quando il programma viene eseguito nel 2021 salta i primi tre giorni di gennaio per la bollettazione di 
+            If Date.Now.Year = 2021 And rowBOL("BOLLETTARIO").ToString().Contains("AU") Then
+                DataI = Anno & Mese & "04"
+                DataF = AnnoDopo & MeseDopo & "01"
+                DataInizioAnno = Anno & "01" & "04"
+            Else
+                ' Procedura NORMALE
+                DataI = Anno & Mese & "01"
+                DataF = AnnoDopo & MeseDopo & "01"
+                DataInizioAnno = Anno & "01" & "01"
+            End If
+
             ' Trova l'ultimo ddt del mese prima
             query = "select MAG80DAT.FTMOV00F.NRBOFM AS NrDDT, " &
                     "MAG80DAT.FTMOV00F.DTBOFM as DtDDT " &
