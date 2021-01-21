@@ -1209,13 +1209,13 @@ Public Class Principale
                     "MAG80DAT.FTMOV00F.DTBOFM as DtDDT " &
                     "from MAG80DAT.FTMOV00F " &
                     "where MAG80DAT.FTMOV00F.CDBOFM = " & "'" & rowBOL("BOLLETTARIO") & "'" &
-                    " and MAG80DAT.FTMOV00F.DTBOFM >= " & "" & DataI & " and MAG80DAT.FTMOV00F.TDOCFM='B'" &
+                    " and MAG80DAT.FTMOV00F.DTBOFM >= " & "" & DataI & " and (MAG80DAT.FTMOV00F.TDOCFM='B' OR MAG80DAT.FTMOV00F.TDOCFM='C')" &
                     " UNION ALL " &
                     "select MAG80DAT.FTBKM00F.NRBOFM AS NrDDT, " &
                     "MAG80DAT.FTBKM00F.DTBOFM as DtDDT " &
                     "from MAG80DAT.FTBKM00F " &
                     "where MAG80DAT.FTBKM00F.CDBOFM = " & "'" & rowBOL("BOLLETTARIO") & "'" &
-                    " and MAG80DAT.FTBKM00F.DTBOFM >= " & "" & DataI & " and MAG80DAT.FTBKM00F.TDOCFM='B'" &
+                    " and MAG80DAT.FTBKM00F.DTBOFM >= " & "" & DataI & " and (MAG80DAT.FTBKM00F.TDOCFM='B' OR MAG80DAT.FTBKM00F.TDOCFM='C')" &
                     " ORDER BY NrDDT ASC FETCH FIRST 1 ROW ONLY"
 
             myDA.SelectCommand = New OdbcCommand(query, odbcGalileo)
@@ -1233,7 +1233,7 @@ Public Class Principale
                     "where MAG80DAT.FTMOV00F.CDBOFM = " & "'" & rowBOL("BOLLETTARIO") & "'" &
                     " and MAG80DAT.FTMOV00F.DTBOFM >= " & "" & DataI & "" &
                     " and MAG80DAT.FTMOV00F.DTBOFM < " & "" & DataF & "" &
-                    " and MAG80DAT.FTMOV00F.TDOCFM='B' AND MAG80DAT.FTMOV00F.NRBOFM<>" & NrDDTprecedente & "" &
+                    " and (MAG80DAT.FTMOV00F.TDOCFM='B' OR MAG80DAT.FTMOV00F.TDOCFM='C') AND MAG80DAT.FTMOV00F.NRBOFM<>" & NrDDTprecedente & "" &
                     " UNION ALL " &
                     "select MAG80DAT.FTBKM00F.NRBOFM AS NrDDT, " &
                     "MAG80DAT.FTBKM00F.DTBOFM as DtDDT " &
@@ -1241,7 +1241,7 @@ Public Class Principale
                     "where MAG80DAT.FTBKM00F.CDBOFM = " & "'" & rowBOL("BOLLETTARIO") & "'" &
                     " and MAG80DAT.FTBKM00F.DTBOFM >= " & "" & DataI & "" &
                     " and MAG80DAT.FTBKM00F.DTBOFM < " & "" & DataF & "" &
-                    " and MAG80DAT.FTBKM00F.TDOCFM='B' AND MAG80DAT.FTBKM00F.NRBOFM<>" & NrDDTprecedente & "" &
+                    " and (MAG80DAT.FTBKM00F.TDOCFM='B' OR MAG80DAT.FTBKM00F.TDOCFM='C') AND MAG80DAT.FTBKM00F.NRBOFM<>" & NrDDTprecedente & "" &
                     " ORDER BY NrDDT ASC"
 
             myDA.SelectCommand = New OdbcCommand(query, odbcGalileo)
