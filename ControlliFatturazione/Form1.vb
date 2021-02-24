@@ -532,39 +532,39 @@ Public Class Principale
         getBollettario(DataI, DataF)
 
         For Each rowBOL In tabBOL.Rows
-            query = "select MAG80DAT.FTMOV00F.NRDFFM AS NrDoc, " & _
-                    "MAG80DAT.FTMOV00F.CDCFFM AS CLIENTE, " & _
-                    "MAG80DAT.CGANA01J.DSCOCP AS RAGCLI, " & _
-                    "MAG80DAT.FTMOV00F.CSPEFM AS DESTINATARIO, " & _
-                    "MAG80DAT.FTMOV00F.DTBOFM AS DATA_BOLLA, " & _
-                    "MAG80DAT.FTMOV00F.NRBOFM AS NR_BOLLA, " & _
-                    "DEST.DSCOCP AS RAGDES, " & _
-                    "trim(MAG80DAT.FTMOV00F.CDSPFM) AS PrimoVet , " & _
-                    "trim(MAG80DAT.FTMOV00F.CDVEFM) AS SecondoVet " & _
-                    "from (MAG80DAT.FTMOV00F LEFT JOIN MAG80DAT.CGANA01J ON " & _
-                    "MAG80DAT.FTMOV00F.CDCFFM=MAG80DAT.CGANA01J.CONTCA) " & _
-                    "LEFT JOIN MAG80DAT.CGANA01J DEST ON MAG80DAT.FTMOV00F.CSPEFM=DEST.CONTCA " & _
-                    "where MAG80DAT.FTMOV00F.CDBOFM = " & "'" & rowBOL("BOLLETTARIO") & "' " & _
-                    "and MAG80DAT.FTMOV00F.DTBOFM >= " & "'" & DataI & "' " & _
-                    "and MAG80DAT.FTMOV00F.DTBOFM <= " & "'" & DataF & "' " & _
-                    "and MAG80DAT.FTMOV00F.TDOCFM='B' " & whereDocAct & _
-                    "UNION ALL " & _
-                    "select MAG80DAT.FTBKM00F.NRDFFM AS NrDoc, " & _
-                    "MAG80DAT.FTBKM00F.CDCFFM AS CLIENTE, " & _
-                    "MAG80DAT.CGANA01J.DSCOCP AS RAGCLI, " & _
-                    "MAG80DAT.FTBKM00F.CSPEFM AS DESTINATARIO, " & _
-                    "MAG80DAT.FTBKM00F.DTBOFM AS DATA_BOLLA, " & _
-                    "MAG80DAT.FTBKM00F.NRBOFM AS NR_BOLLA, " & _
-                    "DEST.DSCOCP AS RAGDES, " & _
-                    "trim(MAG80DAT.FTBKM00F.CDSPFM) AS PrimoVet, " & _
-                    "trim(MAG80DAT.FTBKM00F.CDVEFM) AS SecondoVet " & _
-                    "from (MAG80DAT.FTBKM00F LEFT JOIN MAG80DAT.CGANA01J ON " & _
-                    "MAG80DAT.FTBKM00F.CDCFFM=MAG80DAT.CGANA01J.CONTCA) " & _
-                    "LEFT JOIN MAG80DAT.CGANA01J DEST ON MAG80DAT.FTBKM00F.CSPEFM=DEST.CONTCA " & _
-                    "where MAG80DAT.FTBKM00F.CDBOFM = " & "'" & rowBOL("BOLLETTARIO") & "' " & _
-                    "and MAG80DAT.FTBKM00F.DTBOFM >= " & "'" & DataI & "' " & _
-                    "and MAG80DAT.FTBKM00F.DTBOFM <= " & "'" & DataF & "' " & _
-                    "and MAG80DAT.FTBKM00F.TDOCFM='B' " & whereDocStorico & _
+            query = "select MAG80DAT.FTMOV00F.NRDFFM AS NrDoc, " &
+                    "MAG80DAT.FTMOV00F.CDCFFM AS CLIENTE, " &
+                    "MAG80DAT.CGANA01J.DSCOCP AS RAGCLI, " &
+                    "MAG80DAT.FTMOV00F.CSPEFM AS DESTINATARIO, " &
+                    "MAG80DAT.FTMOV00F.DTBOFM AS DATA_BOLLA, " &
+                    "MAG80DAT.FTMOV00F.NRBOFM AS NR_BOLLA, " &
+                    "DEST.DSCOCP AS RAGDES, " &
+                    "trim(MAG80DAT.FTMOV00F.CDSPFM) AS PrimoVet , " &
+                    "trim(MAG80DAT.FTMOV00F.CDVEFM) AS SecondoVet " &
+                    "from (MAG80DAT.FTMOV00F LEFT JOIN MAG80DAT.CGANA01J ON " &
+                    "MAG80DAT.FTMOV00F.CDCFFM=MAG80DAT.CGANA01J.CONTCA) " &
+                    "LEFT JOIN MAG80DAT.CGANA01J DEST ON MAG80DAT.FTMOV00F.CSPEFM=DEST.CONTCA " &
+                    "where MAG80DAT.FTMOV00F.CDBOFM = " & "'" & rowBOL("BOLLETTARIO") & "' " &
+                    "and MAG80DAT.FTMOV00F.DTBOFM >= " & "'" & DataI & "' " &
+                    "and MAG80DAT.FTMOV00F.DTBOFM <= " & "'" & DataF & "' " &
+                    "and MAG80DAT.FTMOV00F.TDOCFM='B' OR MAG80DAT.FTMOV00F.TDOCFM='C' " & whereDocAct &
+                    "UNION ALL " &
+                    "select MAG80DAT.FTBKM00F.NRDFFM AS NrDoc, " &
+                    "MAG80DAT.FTBKM00F.CDCFFM AS CLIENTE, " &
+                    "MAG80DAT.CGANA01J.DSCOCP AS RAGCLI, " &
+                    "MAG80DAT.FTBKM00F.CSPEFM AS DESTINATARIO, " &
+                    "MAG80DAT.FTBKM00F.DTBOFM AS DATA_BOLLA, " &
+                    "MAG80DAT.FTBKM00F.NRBOFM AS NR_BOLLA, " &
+                    "DEST.DSCOCP AS RAGDES, " &
+                    "trim(MAG80DAT.FTBKM00F.CDSPFM) AS PrimoVet, " &
+                    "trim(MAG80DAT.FTBKM00F.CDVEFM) AS SecondoVet " &
+                    "from (MAG80DAT.FTBKM00F LEFT JOIN MAG80DAT.CGANA01J ON " &
+                    "MAG80DAT.FTBKM00F.CDCFFM=MAG80DAT.CGANA01J.CONTCA) " &
+                    "LEFT JOIN MAG80DAT.CGANA01J DEST ON MAG80DAT.FTBKM00F.CSPEFM=DEST.CONTCA " &
+                    "where MAG80DAT.FTBKM00F.CDBOFM = " & "'" & rowBOL("BOLLETTARIO") & "' " &
+                    "and MAG80DAT.FTBKM00F.DTBOFM >= " & "'" & DataI & "' " &
+                    "and MAG80DAT.FTBKM00F.DTBOFM <= " & "'" & DataF & "' " &
+                    "and (MAG80DAT.FTBKM00F.TDOCFM='B' OR MAG80DAT.FTBKM00F.TDOCFM='C') " & whereDocStorico &
                     "ORDER BY NrDoc"
 
             myDA.SelectCommand = New OdbcCommand(query, odbcGalileo)
@@ -1062,19 +1062,19 @@ Public Class Principale
 
         For ii As Integer = maxiDRow To DgvArchivio.Rows.Count - 1
             Dim numdoc As String = DgvArchivio.Rows(ii).Cells(0).Value
-            Dim tmpdata As String = ""
+            Dim tmpdata As String = CmbAnnoDoc.Text
             If numdoc <> Nothing Then
-
+                ' da filtrare in base all'anno selezionato nella form
                 Try
-                    query = "SELECT MAG80DAT.FTMOV00F.DTBOFM as DtDDT " & _
-                            "from MAG80DAT.FTMOV00F " & _
-                            "where MAG80DAT.FTMOV00F.NRDFFM = " & "'" & numdoc & "' " & _
-                            "and MAG80DAT.FTMOV00F.TDOCFM='B' " & _
-                            "UNION ALL " & _
-                            "SELECT MAG80DAT.FTBKM00F.DTBOFM as DtDDT " & _
-                            "from MAG80DAT.FTBKM00F " & _
-                            "where MAG80DAT.FTBKM00F.NRDFFM = " & "'" & numdoc & "' " & _
-                            "and MAG80DAT.FTBKM00F.TDOCFM='B' "
+                    query = "SELECT MAG80DAT.FTMOV00F.DTBOFM as DtDDT " &
+                            "from MAG80DAT.FTMOV00F " &
+                            "where MAG80DAT.FTMOV00F.NRDFFM = " & "'" & numdoc & "' " &
+                            "and (MAG80DAT.FTMOV00F.TDOCFM='B' OR MAG80DAT.FTMOV00F.TDOCFM='C') AND MAG80DAT.FTMOV00F.DTBOFM LIKE '" & tmpdata & "%' " &
+                            "UNION ALL " &
+                            "SELECT MAG80DAT.FTBKM00F.DTBOFM as DtDDT " &
+                            "from MAG80DAT.FTBKM00F " &
+                            "where MAG80DAT.FTBKM00F.NRDFFM = " & "'" & numdoc & "' " &
+                            "and (MAG80DAT.FTBKM00F.TDOCFM='B' OR MAG80DAT.FTBKM00F.TDOCFM='C') AND MAG80DAT.FTBKM00F.DTBOFM LIKE '" & tmpdata & "%' "
 
                     odbcGalileo.ConnectionString = myConnectionStringGalileo
                     odbcGalileo.Open()
@@ -1870,22 +1870,22 @@ Public Class Principale
 
         Bollettario = CmbBollettarioDoc.SelectedItem
 
-        query = "SELECT MAG80DAT.FTMOV00F.NRDFFM AS NrDOC " & _
-                "from MAG80DAT.FTMOV00F " & _
-                "where MAG80DAT.FTMOV00F.NRBOFM >= " & "'" & _docDa & "' " & _
-                "and MAG80DAT.FTMOV00F.NRBOFM <= " & "'" & _docA & "' " & _
-                "and MAG80DAT.FTMOV00F.DTBOFM >= " & " '" & DataI & "' " & _
-                "and MAG80DAT.FTMOV00F.DTBOFM <= " & "'" & DataF & "' " & _
-                "and MAG80DAT.FTMOV00F.TDOCFM='B' " & _
-                "and MAG80DAT.FTMOV00F.CDBOFM = " & "'" & Bollettario & "' " & _
-                "UNION ALL " & _
-                "SELECT MAG80DAT.FTBKM00F.NRDFFM AS NrDOC " & _
-                "from MAG80DAT.FTBKM00F " & _
-                "where MAG80DAT.FTBKM00F.NRBOFM >= " & "'" & _docDa & "' " & _
-                "and MAG80DAT.FTBKM00F.NRBOFM <= " & "'" & _docA & "' " & _
-                "and MAG80DAT.FTBKM00F.DTBOFM >= " & " '" & DataI & "' " & _
-                "and MAG80DAT.FTBKM00F.DTBOFM <= " & "'" & DataF & "' " & _
-                "and MAG80DAT.FTBKM00F.TDOCFM='B' " & _
+        query = "SELECT MAG80DAT.FTMOV00F.NRDFFM AS NrDOC " &
+                "from MAG80DAT.FTMOV00F " &
+                "where MAG80DAT.FTMOV00F.NRBOFM >= " & "'" & _docDa & "' " &
+                "and MAG80DAT.FTMOV00F.NRBOFM <= " & "'" & _docA & "' " &
+                "and MAG80DAT.FTMOV00F.DTBOFM >= " & " '" & DataI & "' " &
+                "and MAG80DAT.FTMOV00F.DTBOFM <= " & "'" & DataF & "' " &
+                "and (MAG80DAT.FTMOV00F.TDOCFM='B' OR MAG80DAT.FTMOV00F.TDOCFM='C')" &
+                "and MAG80DAT.FTMOV00F.CDBOFM = " & "'" & Bollettario & "' " &
+                "UNION ALL " &
+                "SELECT MAG80DAT.FTBKM00F.NRDFFM AS NrDOC " &
+                "from MAG80DAT.FTBKM00F " &
+                "where MAG80DAT.FTBKM00F.NRBOFM >= " & "'" & _docDa & "' " &
+                "and MAG80DAT.FTBKM00F.NRBOFM <= " & "'" & _docA & "' " &
+                "and MAG80DAT.FTBKM00F.DTBOFM >= " & " '" & DataI & "' " &
+                "and MAG80DAT.FTBKM00F.DTBOFM <= " & "'" & DataF & "' " &
+                "and (MAG80DAT.FTBKM00F.TDOCFM='B' OR MAG80DAT.FTBKM00F.TDOCFM='C')" &
                 "and MAG80DAT.FTBKM00F.CDBOFM = " & "'" & Bollettario & "' "
 
         odbcGalileo.ConnectionString = myConnectionStringGalileo
